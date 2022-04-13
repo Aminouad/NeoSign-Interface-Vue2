@@ -20,7 +20,7 @@ const router = createRouter({
            { path: 'details', component:null}, 
         ] */},
         { path: '/signDocument', component: SignDocument},
-        { path: '/addDocument', components: AddDocument },
+        { path: '/addDocument', component: AddDocument },
         { path: '/dashboard', component: DashboardPage},
         { path: '/:notFound(.*)', component: NotFound},
 

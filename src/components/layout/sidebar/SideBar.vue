@@ -12,22 +12,20 @@ export default {
 
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
-    <h1>
-      <span v-if="collapsed">
+    <div>
+      <span v-if="!collapsed">
        
         <!-- <div class="rotate-180Font">NEOsign</div> -->
-        <div class="logoStyleMinimized"><img src="src/assets/logo.png"></div>
+        <div class="logoStyle"><img src="src/assets/logo.png"></div>
         
       </span>
-      <span  v-else>
-        <div class="logoStyle"><img src="src/assets/logo.png"></div>
-        </span>
-    </h1>
+      
+    </div>
 
     <SidebarLink to="/documents" icon="fas fa-home">Home</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Tableau de bord</SidebarLink>
     <SidebarLink to="/analytics" icon="fas fa-chart-bar">Statistiques</SidebarLink>
-    <SidebarLink to="/friends" icon="fas fa-file-alt">Doucments</SidebarLink>
+    <SidebarLink to="/addDocument" icon="fas fa-file-alt">Doucments</SidebarLink>
     <SidebarLink to="/image" icon="fas fa-image">Images</SidebarLink>
 
     <span
@@ -91,12 +89,22 @@ export default {
   
 }
 .logoStyle{
-    position: absolute;
-  width: 250px;
-  height: 54px;
+  
+ display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: 400;
+  user-select: none;
+  margin-top: 10px;
+  margin-bottom: 20px ;
+  padding: 0px 10px;
+  border-radius: 0.25em;
+  height: fit-content;
+  color: white;
+  text-decoration: none;
   background-color: white;
-  left: -16%;
-  padding-top: 0.1em;
+  
   
 }
 </style>
