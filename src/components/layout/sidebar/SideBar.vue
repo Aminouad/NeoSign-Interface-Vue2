@@ -16,7 +16,7 @@ export default {
       <span v-if="collapsed">
        
         <!-- <div class="rotate-180Font">NEOsign</div> -->
-        <div class="logoStyle"><img src="src/assets/logo.png"></div>
+        <div class="logoStyleMinimized"><img src="src/assets/logo.png"></div>
         
       </span>
       <span  v-else>
@@ -81,12 +81,8 @@ export default {
   transition: 0.2s linear;
 
 }
-.rotate-180Font {
-  top: 7%;
-  left:-32%;
+.logoStyleMinimized {
   position: absolute;
-  transform: rotate(-90deg);
-  transition: 0.8s linear;
   width: 250px;
   height: 54px;
   background-color: white;
@@ -94,11 +90,10 @@ export default {
 }
 .logoStyle{
     position: absolute;
-  padding: 0.09em;
   width: 250px;
   height: 54px;
   background-color: white;
-  left: -20%;
+  left: -28%;
   
 }
 </style>
