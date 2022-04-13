@@ -25,9 +25,9 @@ export default {
     </h1>
 
     <SidebarLink to="/documents" icon="fas fa-home">Home</SidebarLink>
-    <SidebarLink to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink>
-    <SidebarLink to="/analytics" icon="fas fa-chart-bar">Analytics</SidebarLink>
-    <SidebarLink to="/friends" icon="fas fa-users">Friends</SidebarLink>
+    <SidebarLink to="/dashboard" icon="fas fa-columns">Tableau de bord</SidebarLink>
+    <SidebarLink to="/analytics" icon="fas fa-chart-bar">Statistiques</SidebarLink>
+    <SidebarLink to="/friends" icon="fas fa-file-alt">Doucments</SidebarLink>
     <SidebarLink to="/image" icon="fas fa-image">Images</SidebarLink>
 
     <span
@@ -82,18 +82,21 @@ export default {
 
 }
 .logoStyleMinimized {
+  padding-top: 0.1em;
   position: absolute;
   width: 250px;
   height: 54px;
   background-color: white;
   left: -20%;
+  
 }
 .logoStyle{
     position: absolute;
   width: 250px;
   height: 54px;
   background-color: white;
-  left: -28%;
+  left: -16%;
+  padding-top: 0.1em;
   
 }
 </style>
