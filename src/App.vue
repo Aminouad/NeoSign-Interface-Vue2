@@ -1,18 +1,30 @@
 <template>
-    <the-header></the-header>
+    
+    <side-bar/>
+    <div :style="{ 'margin-left': sidebarWidth }"> 
     <router-view></router-view>
+
+    </div>
 </template>
 
 
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue'
+import SideBar from './components/layout/sidebar/SideBar.vue';
+import { sidebarWidth} from './components/layout/sidebar/state'
 
 
 export default {
     components: {
-        TheHeader
+       
+        SideBar
+    },
+    setup() {
+        return {
+            sidebarWidth
+        }
     }
+
 }
 </script>
 
@@ -20,17 +32,21 @@ export default {
 
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-* {
-  box-sizing: border-box;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-
-html {
-  font-family: "Roboto", sans-serif;
+#nav {
+  padding: 30px;
 }
-
-body {
-  margin: 0;
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
