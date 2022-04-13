@@ -14,13 +14,17 @@ export default {
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <h1>
       <span v-if="collapsed">
-        <div>N</div>
-        <div>S</div>
+       
+        <!-- <div class="rotate-180Font">NEOsign</div> -->
+        <div class="logoStyle"><img src="src/assets/logo.png"></div>
+        
       </span>
-      <span v-else>NEOsign</span>
+      <span  v-else>
+        <div class="logoStyle"><img src="src/assets/logo.png"></div>
+        </span>
     </h1>
 
-    <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
+    <SidebarLink to="/documents" icon="fas fa-home">Home</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink>
     <SidebarLink to="/analytics" icon="fas fa-chart-bar">Analytics</SidebarLink>
     <SidebarLink to="/friends" icon="fas fa-users">Friends</SidebarLink>
@@ -36,11 +40,14 @@ export default {
   </div>
 </template>
 
+
+
+
 <style>
 :root {
-  --sidebar-bg-color: #2f855a;
-  --sidebar-item-hover: #38a169;
-  --sidebar-item-active: #276749;
+  --sidebar-bg-color: #F7D125;
+  --sidebar-item-hover: #333331;
+  --sidebar-item-active: #333331;
 }
 </style>
 
@@ -72,5 +79,26 @@ export default {
 .rotate-180 {
   transform: rotate(180deg);
   transition: 0.2s linear;
+
+}
+.rotate-180Font {
+  top: 7%;
+  left:-32%;
+  position: absolute;
+  transform: rotate(-90deg);
+  transition: 0.8s linear;
+  width: 250px;
+  height: 54px;
+  background-color: white;
+  left: -20%;
+}
+.logoStyle{
+    position: absolute;
+  padding: 0.09em;
+  width: 250px;
+  height: 54px;
+  background-color: white;
+  left: -20%;
+  
 }
 </style>
