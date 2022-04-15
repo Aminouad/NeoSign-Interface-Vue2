@@ -3,7 +3,8 @@
     <side-bar/>
     <div :style="{ 'margin-left': sidebarWidth }"> 
     <router-view></router-view>
-    
+    <the-footer/>
+     
 
     </div>
 </template>
@@ -12,13 +13,16 @@
 
 <script>
 import SideBar from './components/layout/sidebar/SideBar.vue';
+import TheFooter from './components/layout/TheFooter.vue';
+
 import { sidebarWidth} from './components/layout/sidebar/state'
 
 
 export default {
     components: {
        
-        SideBar
+        SideBar,
+        TheFooter
     },
     setup() {
         return {
@@ -50,4 +54,7 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+</style>
+<style scoped>
+
 </style>
