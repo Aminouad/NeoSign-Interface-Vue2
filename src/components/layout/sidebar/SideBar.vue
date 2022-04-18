@@ -35,11 +35,11 @@ export default {
     <div class="listOfLink">
 
     
-    <SidebarLink to="/documents" icon="fas fa-home">Home</SidebarLink>
+    <SidebarLink to="/documents" icon="fas fa-home">Accueil</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Tableau de bord</SidebarLink>
     <SidebarLink to="/analytics" icon="fas fa-chart-bar">Statistiques</SidebarLink>
     <SidebarLink to="/addDocument" icon="fas fa-file-alt">Doucments</SidebarLink>
-    <SidebarLink to="/societes" icon="fas fa-building">Societes</SidebarLink>
+    <SidebarLink to="/societes" icon="fas fa-building">Sociétés</SidebarLink>
      </div>
     <span
       class="collapse-icon"
@@ -78,7 +78,7 @@ export default {
   transition: 0.3s ease;
   display: flex;
   flex-direction: column;
-
+  text-align: center;
 }
 .sidebar h1 {
   height: 2.5em;
@@ -145,4 +145,6 @@ export default {
   transform: rotate(-90deg);
   transition: 0.2s linear ;
 }
+
+
 </style>
