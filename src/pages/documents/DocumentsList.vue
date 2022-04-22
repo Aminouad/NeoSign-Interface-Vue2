@@ -13,11 +13,8 @@
         <document-item
         v-for="document in filteredDocuments"
         :key="document.id"
-        :id="document.id"
-        :name="document.name"
-        :owner="document.owner"
-        :date="document.date"
-        :areas="document.areas"
+        :document="document"
+        @show-document="showDocument"
         ></document-item>
        </ul>
        <h3 v-else > Aucun document trouvé </h3>
@@ -29,6 +26,8 @@
 <script>
 import DocumentItem from '../../components/Documents/DocumentItem.vue'
 export default {
+    emits: ['select-document'],
+
   components: { DocumentItem },
    computed: {
      filteredDocuments() {
@@ -36,6 +35,11 @@ export default {
      },
      hasDocuments() {
        return this.$store.getters['documents/hasDocuments']
+     }
+   },
+   methods:{
+     showDocument(document) {
+         this.$emit('select-document',document)
      }
    }
 }

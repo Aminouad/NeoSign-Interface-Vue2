@@ -9,29 +9,37 @@ export default {
             {
                 id: 'd1',
                 name: "Contrat Ouadrani Amine",
+                type:'PDF',
                 owner: 'RH',
                 areas: ['entrant', 'non-signé',],
                 description:
                   "Contrat de travail CDI à signé ",
-                date: '01/04/2022'
+                date: '01/04/2022',
+                path:'src/assets/a.pdf'
               },
               {
                 id: 'd2',
                 name: 'Contrat de partenariat',
+                type:'XML',
                 owner: 'PDG',
                 areas: ['sortant', 'signé'],
                 description:
                   'Contrat de partenariat avec la banque centrale',
-                date: '08/04/2022'
+                date: '08/04/2022',
+                path:'src/assets/b.pdf'
+
               },
               {
                 id: 'd3',
                 name: 'Demande de congé',
+                type:'PDF',
                 owner: 'Chef de Projet',
                 areas: ['sortant', 'signé'],
                 description:
                   'Demande de congé ',
-                date: '08/04/2022'
+                date: '08/04/2022',
+                path:'src/assets/b.pdf'
+
               }
            ]
        }

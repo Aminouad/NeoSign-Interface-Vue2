@@ -40,6 +40,8 @@ export default {
     <SidebarLink to="/analytics" icon="fas fa-chart-bar">Statistiques</SidebarLink>
     <SidebarLink to="/addDocument" icon="fas fa-file-alt">Doucments</SidebarLink>
     <SidebarLink to="/societes" icon="fas fa-building">Sociétés</SidebarLink>
+    <SidebarLink to="/personnels" icon="fas fa-address-book">Personnels</SidebarLink>
+
      </div>
     <span
       class="collapse-icon"
@@ -58,9 +60,9 @@ export default {
 
 <style>
 :root {
-  --sidebar-bg-color: #F7D125;
-  --sidebar-item-hover: #333331;
-  --sidebar-item-active: #333331;
+  --sidebar-bg-color: #00B1B2;
+  --sidebar-item-hover: #f7d647cb;
+  --sidebar-item-active: #F5C900;
 }
 </style>
 
@@ -129,8 +131,6 @@ export default {
 }
 .listOfLink{
   margin-top: 20%;
-  border-top: 0.01rem solid white;
-  border-bottom: 0.01rem solid white;
 
 }
 .facile{

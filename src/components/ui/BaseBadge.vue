@@ -19,9 +19,11 @@ export default {
   color: #252525;
   border-radius: 4px;
   opacity: 50%;
-  padding: 0.5rem 1.5rem;
+  padding: 0.3rem 0.6rem;
   display: inline-block;
   margin-right: 0.5rem;
+  font-size: 60%;
+  
 }
 
 .entrant {  
@@ -40,6 +42,14 @@ export default {
 }
 .non-signé {
   background-color: #FA2814;
+  color: white;
+}
+.expiré {
+  background-color: #FA2814;
+  color: white;
+}
+.activé {  
+  background-color: #97E016;
   color: white;
 }
 

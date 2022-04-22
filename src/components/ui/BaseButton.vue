@@ -34,42 +34,45 @@ export default {
 button,
 a {
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.4rem 1rem;
   font: inherit;
-  background-color: #F7D125;
-  border: 1px solid #F7D125;
+  background-color: #00B1B2;
+  border: 1px solid #ffffff;
   color: white;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 3px;
   margin-right: 0.5rem;
   display: inline-block;
+font-size: 70%;
+
 }
 
 a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #333331;
-  border-color: #333331;
+  background-color: #ffffff;
+  border-color: #00B1B2;
+  color: #00B1B2 ;
 }
 
 .flat {
   background-color: transparent;
-  color: #333331;
+  color: #00B1B2;
   border: none;
 }
 
 .outline {
   background-color: transparent;
-  border-color: #F7D125;
-  color: #F7D125;
+  border-color: #00B1B2;
+  color: #00B1B2;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #333331;
+  background-color: #00B1B2;
     color: #ffffff;
 
 }
