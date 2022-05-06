@@ -5,7 +5,9 @@
           <i class="fas fa-file-alt"></i>{{ "  " + document.type }}
 
       <h4>{{ document.owner }}</h4>
+      <h4>{{ document.description }}</h4>
       <h4>{{ document.date }}</h4>
+
     </div>
     <div>
       <base-badge

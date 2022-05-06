@@ -19,7 +19,7 @@
 
 <script>
 import WebViewer from "../../components/layout/WebViewer.vue";
-import DocumentsList from "./DocumentsList.vue";
+import DocumentsList from "../../components/Documents/DocumentsList.vue";
 
 export default {
   data() {

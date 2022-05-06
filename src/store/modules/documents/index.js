@@ -11,7 +11,7 @@ export default {
                 name: "Contrat Ouadrani Amine",
                 type:'PDF',
                 owner: 'RH',
-                areas: ['entrant', 'non-signé',],
+                areas: ['non-signé',],
                 description:
                   "Contrat de travail CDI à signé ",
                 date: '01/04/2022',
@@ -22,7 +22,7 @@ export default {
                 name: 'Contrat de partenariat',
                 type:'XML',
                 owner: 'PDG',
-                areas: ['sortant', 'signé'],
+                areas: ['signé'],
                 description:
                   'Contrat de partenariat avec la banque centrale',
                 date: '08/04/2022',
@@ -34,7 +34,7 @@ export default {
                 name: 'Demande de congé',
                 type:'PDF',
                 owner: 'Chef de Projet',
-                areas: ['sortant', 'signé'],
+                areas: ['signé'],
                 description:
                   'Demande de congé ',
                 date: '08/04/2022',

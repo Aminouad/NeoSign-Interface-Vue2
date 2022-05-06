@@ -35,10 +35,10 @@ export default {
     <div class="listOfLink">
 
     
-    <SidebarLink to="/documents" icon="fas fa-home">Accueil</SidebarLink>
+    <SidebarLink to="/" icon="fas fa-home">Accueil</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Tableau de bord</SidebarLink>
     <SidebarLink to="/analytics" icon="fas fa-chart-bar">Statistiques</SidebarLink>
-    <SidebarLink to="/addDocument" icon="fas fa-file-alt">Doucments</SidebarLink>
+    <SidebarLink to="/Documents" icon="fas fa-file-alt">Doucments</SidebarLink>
     <SidebarLink to="/societes" icon="fas fa-building">Sociétés</SidebarLink>
     <SidebarLink to="/personnels" icon="fas fa-address-book">Personnels</SidebarLink>
 

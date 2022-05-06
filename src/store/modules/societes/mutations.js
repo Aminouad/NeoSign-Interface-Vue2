@@ -1,1 +1,5 @@
-export default {};
+export default {
+    addSociete(state,payload) {
+        state.societes.push(payload);
+    }
+};
