@@ -7,7 +7,7 @@ export default {
                 contact: data.email,
                 password:data.password,
                 date: data.date,
-                areas: data.etat,
+                etats: data.etats,
   
         };
         context.commit('addSociete',societeData)

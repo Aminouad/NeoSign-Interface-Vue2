@@ -20,7 +20,7 @@
         :name="societe.name"
         :contact="societe.contact"
         :date="societe.date"
-        :areas="societe.areas"
+        :etats="societe.etats"
         ></societe-item>
        </ul>
        <h3 v-else > Aucune société trouvé </h3>

@@ -16,7 +16,11 @@
       <label for="description">Description:</label>
       <textarea id="description" rows="5" v-model.trim="description"></textarea>
     </div>
-
+     <div class="form-control">
+      <label>File
+        <input type="file" id="file" ref="file" @change="handleFileUpload()" :accept="`.${type}`" @click="m"/>
+      </label>
+    </div>
     <base-button>Enregistrer</base-button>
   </form>
 </template>
@@ -34,28 +38,34 @@ export default {
       description: "",
       date: "",
       areas: ['non-signé'],
-      path: "",
+      file: "",
     };
   },
   methods: {
     submitForm() {
       var today = new Date();
 var dateNow = today.getDate() +'/' +(today.getMonth()+1)+'/'+today.getFullYear();
+var userName=this.$store.getters['auth/userId']
 
       const formData = {
         name: this.name,
-        owner: "ok",
+        owner: userName,
         type:this.type,
         description: this.description,
         date: dateNow,
         areas: this.areas,
-        path: this.path,
+        path: "../"+ userName ,
+        file: this.file,
+
 
       };
       this.$emit('save-data',formData);
       this.$router.replace('/Documents'); // with replace we can't go back to previous page 
 
     },
+    handleFileUpload(){
+    this.file = this.$refs.file.files[0];
+    }
   },
 };
 </script>

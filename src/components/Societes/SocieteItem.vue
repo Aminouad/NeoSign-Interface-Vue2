@@ -4,8 +4,9 @@
         <h4>{{ contact }}</h4>
 
         <h4>{{ date }}</h4>
+        
         <div>
-            <base-badge v-for="area in areas" :key="area" :type="area" :title="area"></base-badge>
+            <base-badge v-for="etat in etats" :key="etat" :type="etat" :title="etat"></base-badge>
         </div>
         <div class="actions" >
               <base-button mode="outline" link :to="societeDetailsLink">Modifier</base-button>
@@ -16,7 +17,7 @@
 </template>
 <script>
 export default {
-    props: ['id','name','contact','date','areas'],
+    props: ['id','name','contact','date','etats'],
     computed: {
         
         

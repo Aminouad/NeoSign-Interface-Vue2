@@ -10,7 +10,7 @@ export default {
                 id: 's1',
                 name: "ATB",
                 contact: 'contact@atb.tn',
-                areas: ['activé'],
+                etats: ['activé'],
                 description:
                   "lorem lipsum  ",
                 date: '01/04/2022'
@@ -19,7 +19,7 @@ export default {
                 id: 's2',
                 name: 'Assurance ',
                 contact: 'contact@assurance.com',
-                areas: ['expiré'],
+                etats: ['expiré'],
                 description:
                   'lorem',
                 date: '08/04/2022'
@@ -28,7 +28,7 @@ export default {
                 id: 's3',
                 name: 'Agence nationale',
                 contact: 'contact@agence.com',
-                areas: ['activé'],
+                etats: ['activé'],
                 description:
                   'lorem lipsum',
                 date: '08/04/2022'
