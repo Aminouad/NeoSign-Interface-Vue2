@@ -19,20 +19,10 @@ export default {
       WebViewer({ path, initialDoc: props.initialDoc }, viewer.value).then(
         (instance) => {
 
-          const { documentViewer, annotationManager, Annotations } =
+          const { documentViewer } =
             instance.Core;
           documentViewer.addEventListener("documentLoaded", () => {
-            const rectangleAnnot = new Annotations.RectangleAnnotation({
-              PageNumber: 1,
-              // values are in page coordinates with (0, 0) in the top left
-              X: 100,
-              Y: 150,
-              Width: 200,
-              Height: 50,
-              Author: annotationManager.getCurrentUser(),
-            });
-            annotationManager.addAnnotation(rectangleAnnot);
-            annotationManager.redrawAnnotation(rectangleAnnot);
+            
 
           });
         }

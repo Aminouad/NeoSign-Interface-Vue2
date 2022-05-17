@@ -21,6 +21,7 @@
 <script>
 import WebViewer from "../../components/layout/WebViewer.vue";
 import DocumentsList from "../../components/Documents/DocumentsList.vue";
+//import PdfJs from '../../components/layout/PdfJs.vue';
 
 export default {
   data() {
@@ -43,7 +44,9 @@ export default {
   },
   
 
-  components: { WebViewer, DocumentsList },
+  components: { //PdfJs,
+  WebViewer, 
+  DocumentsList },
 };
 </script>
 
