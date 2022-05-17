@@ -1,19 +1,28 @@
 <template>
   <section>
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
+      <p>{{ error }}</p>
+    </base-dialog>
+    <base-dialog :show="isLoading" title="" fixed>
+      <base-spinner></base-spinner>
+    </base-dialog>
   </section>
   <section>
     <base-card>
-        <h3>Mes Documents :</h3>
+      <h3>Mes Documents :</h3>
 
       <div class="controls">
-        <base-button mode="outline">Refresh</base-button>
+          <base-button mode="outline" @click="loadDocuments()">Refresh</base-button>
         <div class="search">
-          <input  type="text" v-model="search" placeholder="Search" /> <br />
+          <input type="text" v-model="search" placeholder="Search" /> <br />
           <br />
         </div>
         <base-button link to="/addDocument">Ajouter un document</base-button>
       </div>
-
       <ul v-if="hasDocuments">
         <document-item
           v-for="document in filteredDocuments"
@@ -29,15 +38,22 @@
 
 <script>
 import DocumentItem from "./DocumentItem.vue";
+import BaseDialog from "../ui/BaseDialog.vue";
+
 export default {
   emits: ["select-document"],
   data() {
     return {
       search: "",
+      error: null,
+      isLoading: false,
     };
   },
-
-  components: { DocumentItem },
+  created() {
+   console.log("test");
+      this.loadDocuments();
+  },
+  components: { DocumentItem, BaseDialog },
   computed: {
     filteredDocuments() {
       return this.$store.getters["documents/documents"].filter((p) => {
@@ -55,6 +71,18 @@ export default {
   methods: {
     showDocument(document) {
       this.$emit("select-document", document);
+    },
+    async loadDocuments() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("documents/loadDocuments");
+      } catch (error) {
+        this.error = error.message || "Something went wrong!";
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
     },
   },
 };
@@ -76,9 +104,8 @@ ul {
   display: flex;
   justify-content: space-between;
 }
- input:focus { 
-        outline: none !important;
-        border-color: #00B1B2;
-    }
-    
+input:focus {
+  outline: none !important;
+  border-color: #00b1b2;
+}
 </style>

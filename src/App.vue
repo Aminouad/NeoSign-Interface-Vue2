@@ -1,8 +1,10 @@
 <template>
-  <side-bar v-if="isLoggedIn" />
-  <div :style="{ 'margin-left': sidebarWidth }">
-    <router-view></router-view>
-    <the-footer />
+  <div class="app">
+    <side-bar v-if="isLoggedIn" />
+    <div class="main">
+      <router-view></router-view>
+      <the-footer />
+    </div>
   </div>
 </template>
 
@@ -35,22 +37,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-  color: #42b983;
+  .app {
+    display: flex;
+    .main {
+      width: 100%;
+      max-height: 100vh;
+      overflow: auto;
+    }
+  }
 }
 </style>

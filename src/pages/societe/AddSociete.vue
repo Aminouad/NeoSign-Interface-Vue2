@@ -15,7 +15,7 @@
      methods: {
          saveData(data) {
          this.$store.dispatch('societes/addSociete',data);
-
+          
          }
      }
  }

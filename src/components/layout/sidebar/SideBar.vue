@@ -10,12 +10,11 @@ export default {
   },
 
   data() {
-    
     return {
-      upHere : false,
-      
-    }
-  },  methods: {
+      upHere: false,
+    };
+  },
+  methods: {
     logout() {
       return this.$store.dispatch("logout");
     },
@@ -24,8 +23,8 @@ export default {
     getRole() {
       return JSON.parse(localStorage.getItem("role"));
     },
-    getUserId() {
-      return JSON.parse(localStorage.getItem("userId"));
+    getUserEmail() {
+      return JSON.parse(localStorage.getItem("userEmail"));
     },
   },
 };
@@ -36,7 +35,7 @@ export default {
     <div v-if="!collapsed">
       <span>
         <!-- <div class="rotate-180Font">NEOsign</div> -->
-        <div class="logoStyle"><img src="src/assets/logo.png" /></div>
+        <div class="logoStyle"><img src="src/assets/neosign_logo.png" /></div>
       </span>
 
       <h3>Signatue Digitale</h3>
@@ -45,10 +44,8 @@ export default {
         <div class="userInfo1">
           <div class="userLogo">
             <i class="fa-solid fa-user"></i>
-            
           </div>
-          <p>{{ getUserId }}</p>
-          
+          <p>{{ getUserEmail }}</p>
         </div>
         <div class="userInfo2">
           <div class="userLogo">
@@ -71,13 +68,16 @@ export default {
       <SidebarLink to="/analytics" icon="fas fa-chart-bar"
         >Statistiques</SidebarLink
       >
+       <div v-if="getRole!=='AdminNeoledge'">
       <SidebarLink to="/documents" icon="fas fa-file-alt"
         >Doucments</SidebarLink
-      >
-      <SidebarLink to="/societes" icon="fas fa-building">Sociétés</SidebarLink>
+      ></div>
+      <div v-if="getRole==='AdminNeoledge'">
+      <SidebarLink  to="/societes" icon="fas fa-building">Sociétés</SidebarLink></div>
+      <div v-if="getRole!=='AdminNeoledge'">
       <SidebarLink to="/personnels" icon="fas fa-address-book"
         >Personnels</SidebarLink
-      >
+      ></div>
       <SidebarLink to="/authentication" @click="logout" icon="fas fa-sign-out"
         >Se déconnecter</SidebarLink
       >
@@ -105,12 +105,7 @@ export default {
   color: white;
   background-color: var(--sidebar-bg-color);
   float: left;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 0em;
+  height: 100vh;
   transition: 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -173,6 +168,7 @@ export default {
   display: flex;
   flex-direction: row;
   margin-bottom: -9%;
+
 }
 .userInfo2 {
   display: flex;
@@ -186,9 +182,10 @@ export default {
 }
 .user {
   margin-top: -5%;
-
+font-size:0.8rem;
   border-top: 0.01rem solid;
   border-bottom: 0.01rem solid;
   margin-bottom: -15%;
 }
+
 </style>

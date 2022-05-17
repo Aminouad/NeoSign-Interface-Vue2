@@ -1,18 +1,19 @@
 <template>
-  <div style="width: 100%; overflow: auto">
+  <div class="document-viewer">
     <div class="left">
-      <div class="selectDocum" v-if="!selectedDocument">
-          <i class="fa-solid fa-file-lines"></i>
-          <h2>Sélectionner un document</h2>
-      </div>
-      <web-viewer v-else
-       :key="key"
-        :initialDoc="path"
-        @is-loaded="isLoaded"
-      />
+      <documents-list @select-document="selectDocument"></documents-list>
     </div>
     <div class="right">
-      <documents-list @select-document="selectDocument"></documents-list>
+      <div class="selectDocum" v-if="!selectedDocument">
+        <i class="fa-solid fa-file-lines"></i>
+        <h2>Sélectionner un document</h2>
+      </div>
+      <web-viewer
+        class="viewer"
+        v-else
+        :key="key"
+        :initialDoc="path"
+      />
     </div>
   </div>
 </template>
@@ -24,48 +25,52 @@ import DocumentsList from "../../components/Documents/DocumentsList.vue";
 export default {
   data() {
     return {
-      path: '',
+      path: "",
       selectedDocument: undefined,
-      key:0,
+      key: 0,
     };
   },
-  methods:{
-       selectDocument(document){
-         this.selectedDocument=document;
-         this.path = document.path;
-         console.log(document.path);
-         this.key++;
-       },
-       isLoaded(){
-         console.log("ok");
-       } 
+  methods: {
+    selectDocument(document) {
+      this.selectedDocument = document;
+      this.path = `https://localhost:7043/${document.path}`;
+      //console.log(`https://localhost:7043/${document.path}`);
+      this.key++;
+    },
+    isLoaded() {
+      //console.log("ok");
+    },
   },
-  computed:{
-    pathCurrentDocument(){
-      //console.log(this.selectedDocument);
-      return this.selectedDocument ? this.selectedDocument.path: 'src/assets/a.pdf'
-
-    } 
-  },
+  
 
   components: { WebViewer, DocumentsList },
 };
 </script>
 
-<style scoped>
-.left {
-  float: right;
-  width: 50%;
-}
-.right {
-  float: left;
-  width: 50%;
-}
-.selectDocum{
-    text-align: center;
-    margin-top: 50%;
-    margin-bottom: 50%;
+<style lang="scss">
+.document-viewer {
+  display: flex;
 
+  .left {
+    width: 100%;
+    height: 100%;
+  }
+  .right {
+    width: 100%;
+    height: 100%;
+  }
+  .selectDocum {
+    display: flex;
+    right: 0%;
+    left: 100%;
+    bottom: 50%;
+    left: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
+    position: fixed;
+  }
 }
 </style>

@@ -31,7 +31,7 @@ export default {
       password: "",
 
       date: "",
-      etat: ['activé'],
+      etat: 'activé',
     };
   },
   methods: {

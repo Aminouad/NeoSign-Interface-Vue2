@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import router from './router.js';
-import axios from 'axios';
 import App from './App.vue';
 import store from './store/index.js'
 import '@fortawesome/fontawesome-free/js/all'
@@ -13,7 +12,6 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 
-axios.defaults.baseURL = 'https://localhost:7043/api';
 
 
 app.component('base-card',BaseCard);

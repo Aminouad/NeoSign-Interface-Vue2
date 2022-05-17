@@ -9,6 +9,7 @@ export default {
         returnSecureToken: true,
       }
     );
+    console.log(responseToken);
     let responseOK = responseToken.status === 200;
 
     if (
@@ -38,7 +39,11 @@ export default {
       );
       localStorage.setItem(
         "userId",
-        JSON.stringify(responseUserInfo.data.userName)
+        JSON.stringify(responseUserInfo.data.userId)
+      );
+      localStorage.setItem(
+        "userEmail",
+        JSON.stringify(responseUserInfo.data.email)
       );
       localStorage.setItem(
         "role",
@@ -47,7 +52,8 @@ export default {
 
         context.commit("setUser", {
           token: access_token,
-          userId: responseUserInfo.data.userName,
+          userId: responseUserInfo.data.userId,
+          userEmail: responseUserInfo.data.email,
           role: responseUserInfo.data.role,
         });
     }

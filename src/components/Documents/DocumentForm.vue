@@ -6,9 +6,10 @@
     </div>
     <div class="form-control">
       <h3>Type:</h3>
-      <div> PDF
-        <input type="radio" value="PDF" v-model="type" />  
-         XML
+      <div>
+        PDF
+        <input type="radio" value="PDF" v-model="type" />
+        XML
         <input type="radio" value="XML" v-model="type" />
       </div>
     </div>
@@ -16,56 +17,81 @@
       <label for="description">Description:</label>
       <textarea id="description" rows="5" v-model.trim="description"></textarea>
     </div>
-     <div class="form-control">
-      <label>File
-        <input type="file" id="file" ref="file" @change="handleFileUpload()" :accept="`.${type}`" @click="m"/>
+    <div v-if="type" class="form-control">
+      <label
+        >File
+        <input
+          id="fileUpload"
+          type="file"
+          ref="file"
+          @input="handleFileUpload()"
+          :accept="`.${type}`"
+        />
       </label>
     </div>
+
+    <base-dialog title="Preview" :show="preview" @close="toggleModal">
+      <div class="scroll">
+        <web-viewer class="preview" :initialDoc="path" />
+      </div>
+    </base-dialog>
+
     <base-button>Enregistrer</base-button>
   </form>
 </template>
 
-
-
 <script>
+import WebViewer from "../../components/layout/WebViewer.vue";
+
 export default {
-  emits:['save-data'],
+  emits: ["save-data"],
+  components: { WebViewer },
   data() {
     return {
       name: "",
       owner: "",
-      type:"",
+      type: "",
       description: "",
       date: "",
-      areas: ['non-signé'],
+      areas: ["non-signé"],
       file: "",
+      path: "",
+      preview: false,
     };
   },
   methods: {
     submitForm() {
       var today = new Date();
-var dateNow = today.getDate() +'/' +(today.getMonth()+1)+'/'+today.getFullYear();
-var userName=this.$store.getters['auth/userId']
+      var dateNow =
+        today.getDate() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getFullYear();
+      var userName = this.$store.getters["auth/userId"];
 
       const formData = {
         name: this.name,
         owner: userName,
-        type:this.type,
+        type: this.type,
         description: this.description,
         date: dateNow,
         areas: this.areas,
-        path: "../"+ userName ,
+        path: "../" + userName,
         file: this.file,
-
-
       };
-      this.$emit('save-data',formData);
-      this.$router.replace('/Documents'); // with replace we can't go back to previous page 
-
+      this.$emit("save-data", formData);
     },
-    handleFileUpload(){
-    this.file = this.$refs.file.files[0];
-    }
+    handleFileUpload() {
+      this.file = this.$refs.file.files[0];
+      this.path = URL.createObjectURL(this.file);
+      console.log(URL.createObjectURL(this.file));
+      this.toggleModal();
+    },
+    toggleModal() {
+      this.preview = !this.preview;
+      console.log(this.preview);
+    },
   },
 };
 </script>
@@ -123,5 +149,13 @@ h3 {
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+}
+.preview {
+  width: 80vh;
+  height: 40vh;
+  size: 20%;
+}
+.scroll {
+  overflow: scroll;
 }
 </style>

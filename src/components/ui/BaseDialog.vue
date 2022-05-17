@@ -1,11 +1,12 @@
 <template>
-  <teleport to="body">
+  <teleport to="body" >
     <div v-if="show" @click="tryClose" class="backdrop"></div>
-    <transition name="dialog">
-      <dialog open v-if="show">
-        <header>
+    <transition name="dialog" @click.stop>
+      <dialog open v-if="show" :class="{'transparent-background':!title}">
+        <header v-if="title">
           <slot name="header">
-            <h2>{{ title }}</h2>
+            <h2>{{ title }}</h2> 
+            <!-- <base-button @click="tryClose">Close</base-button> -->
           </slot>
         </header>
         <section>
@@ -38,13 +39,13 @@ export default {
       default: false,
     },
   },
-  emits: ['close'],
+  emits: ["close"],
   methods: {
     tryClose() {
       if (this.fixed) {
         return;
       }
-      this.$emit('close');
+      this.$emit("close");
     },
   },
 };
@@ -56,7 +57,7 @@ export default {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 10;
 }
@@ -76,8 +77,13 @@ dialog {
   background-color: white;
 }
 
+.transparent-background{
+  background-color: transparent;
+  box-shadow: none;
+}
+
 header {
-  background-color: #00B1B2;
+  background-color: #00b1b2;
   color: white;
   width: 100%;
   padding: 1rem;
