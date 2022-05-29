@@ -5,7 +5,7 @@ export default {
     namespaced:true,
    state() {
        return {
-        societes: [
+        companies: [
             {
                 id: 's1',
                 name: "ATB",

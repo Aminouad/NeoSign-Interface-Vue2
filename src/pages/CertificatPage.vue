@@ -3,21 +3,20 @@
 
       <h2></h2>
 
-      <document-form class="form-data" @save-data="saveData"></document-form>
+      <certificat-form class="form-data" @save-data="saveData"></certificat-form>
         </div>
 
 </template>
 <script>
-import DocumentForm from "../../components/Documents/DocumentForm.vue";
+import CertificatForm from "../components/Documents/CertificatForm.vue";
 export default {
   components: {
-    DocumentForm,
+    CertificatForm,
   },
   methods: {
     saveData(data) {
         
-      this.$store.dispatch("documents/addDocument", data);
-      //this.$store.dispatch("documents/loadDocuments");
+      this.$store.dispatch("certificate/addCertificate", data);
 
       this.$router.replace("/Documents"); // with replace we can't go back to previous page
     },

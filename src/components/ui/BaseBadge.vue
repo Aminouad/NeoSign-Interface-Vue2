@@ -15,14 +15,18 @@ export default {
 </script>
 <style scoped>
 .badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ccc;
   color: #252525;
   border-radius: 4px;
+  height: fit-content;
   opacity: 50%;
-  padding: 0.3rem 0.6rem;
-  display: inline-block;
+  padding: 0.2rem 0.4rem;
   margin-right: 0.5rem;
-  font-size: 60%;
+  font-size: 10px;
+  margin-inline: 5px;
   
 }
 

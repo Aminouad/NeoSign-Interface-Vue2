@@ -1,4 +1,5 @@
 <template>
+<div class="company-form">
   <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="name">Nom de Société:</label>
@@ -16,6 +17,7 @@
 
     <base-button>Enregistrer</base-button>
   </form>
+  </div>
 </template>
 
 
@@ -52,13 +54,16 @@ export default {
         etat:this.etat
       };
       this.$emit('save-data',formData);
-      this.$router.replace('/societes'); // with replace we can't go back to previous page 
+      this.$router.replace('/companies'); // with replace we can't go back to previous page 
 
     },
   },
 };
 </script>
 <style scoped>
+.company-form{
+  width: 60%;
+}
 .form-control {
   margin: 0.5rem 0;
 }

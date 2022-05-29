@@ -1,30 +1,19 @@
 <template>
   <div>
     <form class="document-form" @submit.prevent="submitForm">
-                    <h2>Ajouter un Document : </h2>
+                    <h2>Ajouter un Certificat : </h2>
 
-      <div class="form-control">
-
-        <label for="name">Nom de document :</label>
-        <input type="text" id="name" v-model.trim="name" />
-      </div>
+     
       <div class="form-control">
         <h3>Type :</h3>
         <div>
-          PDF
-          <input type="radio" value="PDF" v-model="type" />
-          XML
-          <input type="radio" value="XML" v-model="type" />
+          P12
+          <input type="radio" value="P12" v-model="type" />
+          PFX
+          <input type="radio" value="PFX" v-model="type" />
         </div>
       </div>
-      <div class="form-control">
-        <label for="description">Description :</label>
-        <textarea
-          id="description"
-          rows="5"
-          v-model.trim="description"
-        ></textarea>
-      </div>
+      
       <div v-if="type" class="form-control">
         <label
           >Fichier : </label>
@@ -38,55 +27,33 @@
         
       </div>
 
-      <base-modal  title="Aperçu" :show="preview" @close="toggleModal">
-        <div class="scroll">
-          <web-viewer class="preview" :initialDoc="path" />
-        </div>
-      </base-modal>
-
+      
       <base-button class="form-control">Enregistrer</base-button>
     </form>
 </div></template>
 
 <script>
-import WebViewer from "../../components/layout/WebViewer.vue";
 
 export default {
   emits: ["save-data"],
-  components: { WebViewer },
   data() {
     return {
-      name: "",
-      owner: "",
+     
       type: "",
-      description: "",
-      date: "",
-      areas: ["non-signé"],
+    
       file: "",
       path: "",
-      preview: false,
     };
   },
   methods: {
     submitForm() {
-      var today = new Date();
-      var dateNow =
-        today.getDate() +
-        "/" +
-        (today.getMonth() + 1) +
-        "/" +
-        today.getFullYear();
-      var userName = this.$store.getters["auth/userId"];
+      
+      var userEmail = JSON.parse(localStorage.getItem("userEmail"));
 
       const formData = {
-        name: this.name,
-        owner: userName,
+        Owner:userEmail,
         type: this.type,
-        description: this.description,
-        date: dateNow,
-        areas: this.areas,
-        path: "../" + userName,
-        file: this.file,
+        File: this.file,
       };
       this.$emit("save-data", formData);
     },
@@ -94,12 +61,8 @@ export default {
       this.file = this.$refs.file.files[0];
       this.path = URL.createObjectURL(this.file);
       console.log(URL.createObjectURL(this.file));
-      this.toggleModal();
     },
-    toggleModal() {
-      this.preview = !this.preview;
-      console.log(this.preview);
-    },
+    
   },
 };
 </script>

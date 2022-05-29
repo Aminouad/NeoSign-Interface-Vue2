@@ -1,6 +1,7 @@
 <script>
 import SidebarLink from "./SideBarLink.vue";
 import { collapsed, toggleSidebar, sidebarWidth } from "./state";
+import logo from "@/assets/neosign_logo.png";
 export default {
   props: {},
 
@@ -11,6 +12,7 @@ export default {
 
   data() {
     return {
+      logo:logo,
       upHere: false,
     };
   },
@@ -35,7 +37,7 @@ export default {
     <div v-if="!collapsed">
       <span>
         <!-- <div class="rotate-180Font">NEOsign</div> -->
-        <div class="logoStyle"><img src="src/assets/neosign_logo.png" /></div>
+        <div class="logoStyle"><img :src="logo" /></div>
       </span>
 
       <h3>Signatue Digitale</h3>
@@ -65,15 +67,17 @@ export default {
       <SidebarLink to="/dashboard" icon="fas fa-columns"
         >Tableau de bord</SidebarLink
       >
-      <SidebarLink to="/analytics" icon="fas fa-chart-bar"
-        >Statistiques</SidebarLink
-      >
+             <div v-if="getRole!=='AdminNeoledge'">
+
+      <SidebarLink to="/certificat" icon="fa-solid fa-signature"
+        >Mon certificat</SidebarLink
+      ></div>
        <div v-if="getRole!=='AdminNeoledge'">
       <SidebarLink to="/documents" icon="fas fa-file-alt"
         >Doucments</SidebarLink
       ></div>
       <div v-if="getRole==='AdminNeoledge'">
-      <SidebarLink  to="/societes" icon="fas fa-building">Sociétés</SidebarLink></div>
+      <SidebarLink  to="/companies" icon="fas fa-building">Sociétés</SidebarLink></div>
       <div v-if="getRole!=='AdminNeoledge'">
       <SidebarLink to="/personnels" icon="fas fa-address-book"
         >Personnels</SidebarLink

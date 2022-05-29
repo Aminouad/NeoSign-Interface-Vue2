@@ -9,8 +9,8 @@
             <base-badge v-for="etat in etats" :key="etat" :type="etat" :title="etat"></base-badge>
         </div>
         <div class="actions" >
-              <base-button mode="outline" link :to="societeDetailsLink">Modifier</base-button>
-              <base-button link :to="societeDetailsLink">Supprimer</base-button>
+              <base-button mode="outline" link :to="companyDetailsLink">Modifier</base-button>
+              <base-button link :to="companyDetailsLink">Supprimer</base-button>
 
         </div>
     </li>
@@ -21,7 +21,7 @@ export default {
     computed: {
         
         
-        societeDetailsLink() {
+        companyDetailsLink() {
             return this.$route.path + '/' + this.id
         }
 

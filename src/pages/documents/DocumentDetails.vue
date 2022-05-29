@@ -1,3 +1,0 @@
-<template>
-    Document details
-</template>

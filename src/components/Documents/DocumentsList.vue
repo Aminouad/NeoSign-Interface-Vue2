@@ -11,29 +11,27 @@
       <base-spinner></base-spinner>
     </base-dialog>
   </section>
-  <section>
-    <base-card>
-      <h3>Mes Documents :</h3>
+  <div class="list">
+    <h3>Mes Documents :</h3>
 
-      <div class="controls">
-          <base-button mode="outline" @click="loadDocuments()">Refresh</base-button>
-        <div class="search">
-          <input type="text" v-model="search" placeholder="Search" /> <br />
-          <br />
-        </div>
-        <base-button link to="/addDocument">Ajouter un document</base-button>
+    <div class="controls">
+      <base-button mode="outline" @click="loadDocuments()">Refresh</base-button>
+      <div class="search">
+        <input type="text" v-model="search" placeholder="Search" /> <br />
+        <br />
       </div>
-      <ul v-if="hasDocuments">
-        <document-item
-          v-for="document in filteredDocuments"
-          :key="document.id"
-          :document="document"
-          @show-document="showDocument"
-        ></document-item>
-      </ul>
-      <h3 v-else>Aucun document trouvé</h3>
-    </base-card>
-  </section>
+      <base-button link to="/addDocument">Ajouter un document</base-button>
+    </div>
+    <ul v-if="hasDocuments">
+      <document-item
+        v-for="document in filteredDocuments"
+        :key="document.id"
+        :document="document"
+        @show-document="showDocument"
+      ></document-item>
+    </ul>
+    <h3 v-else>Aucun document trouvé</h3>
+  </div>
 </template>
 
 <script>
@@ -50,8 +48,8 @@ export default {
     };
   },
   created() {
-   console.log("test");
-      this.loadDocuments();
+    console.log("test");
+    this.loadDocuments();
   },
   components: { DocumentItem, BaseDialog },
   computed: {
@@ -77,7 +75,7 @@ export default {
       try {
         await this.$store.dispatch("documents/loadDocuments");
       } catch (error) {
-        this.error = error.message || "Something went wrong!";
+        this.error = error.message || "Une erreur s'est produite!";
       }
       this.isLoading = false;
     },
@@ -107,5 +105,8 @@ ul {
 input:focus {
   outline: none !important;
   border-color: #00b1b2;
+}
+.list {
+  margin-inline: 1em;
 }
 </style>

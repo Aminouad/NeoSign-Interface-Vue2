@@ -1,0 +1,109 @@
+<template>
+    <section>
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
+      <p>{{ error }}</p>
+    </base-dialog>
+    <base-dialog :show="isLoading" title="" fixed>
+      <base-spinner></base-spinner>
+    </base-dialog>
+  </section>
+    <div>
+         
+
+      <div class="controls" >
+      <base-button mode="outline" @click="loadComapnies()">Refresh</base-button>
+       <div class="search">
+          <input  type="text" v-model="search" placeholder="Search" /> <br />
+          <br />
+        </div>
+        <base-button link to="/addCompany" >Ajouter une société</base-button>
+      </div>
+        <ul v-if="hasCompanies">
+        <company-item
+        v-for="company in filteredCompanies"
+        :key="company.id"
+        :id="company.id"
+        :name="company.name"
+        :contact="company.contact"
+        :date="company.date"
+        :etats="company.etats"
+        ></company-item>
+       </ul>
+       <h3 v-else > Aucune société trouvé </h3>
+
+    </div>
+</template>
+
+<script>
+import CompanyItem from '../../components/Companies/CompanyItem.vue'
+import BaseDialog from "../ui/BaseDialog.vue";
+
+export default {
+  components: { CompanyItem,BaseDialog },
+  data() {
+    return {
+      search: "",
+      error: null,
+      isLoading: false,
+    };
+  },
+  created() {
+    console.log("test");
+    this.loadCompanies();
+  },
+   computed: {
+     filteredCompanies() {
+       return this.$store.getters['companies/companies'].filter((p) => {
+        // return true if the product should be visible
+
+        // in this example we just check if the search string
+        // is a substring of the product name (case insensitive)
+        return p.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+      });
+     },
+     hasCompanies() {
+       return this.$store.getters['companies/hasCompanies']
+     }
+   },
+  methods: {
+    
+    async loadCompanies() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("companies/loadCompanies");
+      } catch (error) {
+        this.error = error.message || "Une erreur s'est produite";
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
+    },
+  }
+}
+</script>
+
+<style scoped>
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.search {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10%;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+input:focus { 
+        outline: none !important;
+        border-color: #00B1B2;
+    }
+</style>

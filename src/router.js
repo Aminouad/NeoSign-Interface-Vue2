@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardPage from "./pages/DashboardPage.vue";
 // import HomePage from './pages/HomePage.vue';
 import NotFound from "./pages/NotFound.vue";
+import CertificatPage from "./pages/CertificatPage.vue";
+
 import DocumentsView from "./pages/documents/DocumentsView.vue";
-import SignDocument from "./pages/documents/SignDocument.vue";
 // import DocumentsList from './pages/documents/DocumentsList.vue';
-import DocumentDetails from "./pages/documents/DocumentDetails.vue";
-import AddSociete from "./pages/societe/AddSociete.vue";
-import SocieteDetails from "./pages/societe/SocieteDetails.vue";
-import SocieteList from "./pages/societe/SocieteList.vue";
+import DocumentEdit from "./pages/documents/DocumentEdit.vue";
+import AddCompany from "./pages/companies/AddCompany.vue";
+import CompanyDetails from "./pages/companies/CompanyDetails.vue";
+import CompaniesView from "./pages/companies/CompaniesView.vue";
 import PersonnelsList from "./pages/personnels/PersonnelsList.vue";
 import addPersonnel from "./pages/personnels/addPersonnel.vue";
 import AddDocument from "./pages/documents/AddDocument.vue";
@@ -26,21 +27,19 @@ const router = createRouter({
       component: HomePage,
       beforeEnter: Multiguard([AuthGuard]),
     },
-    { path: "/addDocument", component: AddDocument },
+    { path: "/addDocument", component: AddDocument,beforeEnter: Multiguard([AuthGuard]) }
+    ,
     {
       path: "/documents/:id",
-      component: DocumentDetails,
+      component: DocumentEdit,beforeEnter: Multiguard([AuthGuard])
     },
-    {
-      path: "/signDocument",
-      component: SignDocument,
-      beforeEnter: Multiguard([AuthGuard]),
-    },
+    
     {
       path: "/documents",
       component: DocumentsView,
       beforeEnter: Multiguard([AuthGuard]),
     },
+    
     {
       path: "/dashboard",
       component: DashboardPage,
@@ -52,23 +51,28 @@ const router = createRouter({
       beforeEnter: Multiguard([AuthGuard]),
     },
     {
-      path: "/addSociete",
-      component: AddSociete,
+      path: "/addCompany",
+      component: AddCompany,
       beforeEnter: Multiguard([AuthGuard]),
     },
     {
-      path: "/societes",
-      component: SocieteList,
+      path: "/companies",
+      component: CompaniesView,
       beforeEnter: Multiguard([AuthGuard]),
     },
     {
-      path: "/societeDetails",
-      component: SocieteDetails,
+      path: "/companyDetails",
+      component: CompanyDetails,
       beforeEnter: Multiguard([AuthGuard]),
     },
     {
       path: "/personnels",
       component: PersonnelsList,
+      beforeEnter: Multiguard([AuthGuard]),
+    },
+    {
+      path: "/certificat",
+      component: CertificatPage,
       beforeEnter: Multiguard([AuthGuard]),
     },
     {
