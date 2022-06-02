@@ -31,7 +31,7 @@ export default {
 }
 
 .entrant {  
-  background-color: #97E016;
+  background-color: #588905;
   color: white;
 }
 
@@ -53,7 +53,7 @@ export default {
   color: white;
 }
 .activé {  
-  background-color: #97E016;
+  background-color: #03d65f9e;
   color: white;
 }
 

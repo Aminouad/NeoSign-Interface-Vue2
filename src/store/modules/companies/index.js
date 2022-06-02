@@ -6,33 +6,7 @@ export default {
    state() {
        return {
         companies: [
-            {
-                id: 's1',
-                name: "ATB",
-                contact: 'contact@atb.tn',
-                etats: ['activé'],
-                description:
-                  "lorem lipsum  ",
-                date: '01/04/2022'
-              },
-              {
-                id: 's2',
-                name: 'Assurance ',
-                contact: 'contact@assurance.com',
-                etats: ['expiré'],
-                description:
-                  'lorem',
-                date: '08/04/2022'
-              },
-              {
-                id: 's3',
-                name: 'Agence nationale',
-                contact: 'contact@agence.com',
-                etats: ['activé'],
-                description:
-                  'lorem lipsum',
-                date: '08/04/2022'
-              }
+            
            ]
        }
    },

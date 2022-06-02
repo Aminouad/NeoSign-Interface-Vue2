@@ -2,7 +2,9 @@
  
  <template>
      <div class="add-company">
-         <h2>Ajouter une Société</h2>
+         <h3>Nouvelle Société</h3>
+         <h4>Merci de bien remplir ce formulaire </h4>
+
          <company-form @save-data="saveData"></company-form>
          </div>
  </template>
@@ -24,11 +26,11 @@
  
  <style scoped>
 .add-company{
-    margin-inline: 1em;
+    margin-top: 4%;
     display: flex;
+    margin-inline: 1em;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     
 }
 </style>

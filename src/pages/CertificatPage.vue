@@ -1,8 +1,8 @@
 <template>
-      <div class=".add-document">
+      <div class="add-document">
 
-      <h2></h2>
-
+<h3>Mon certificat</h3>
+         <h4>Merci d'ajouter votre certificat</h4>
       <certificat-form class="form-data" @save-data="saveData"></certificat-form>
         </div>
 
@@ -32,8 +32,11 @@ justify-content: center;
   
 }
 .add-document{
-    margin: 8rem;
+   margin-top: 4%;
     display: flex;
+    margin-inline: 1em;
+    flex-direction: column;
+    align-items: center;
     
     
 }

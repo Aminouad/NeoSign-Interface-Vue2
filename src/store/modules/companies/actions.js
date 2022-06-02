@@ -23,6 +23,7 @@ export default {
       })
       .then((data) => {
         console.log(data);
+        this.$stroe.dispatch("loadCompanies");
       });
     console.log(response);
     context.commit("addCompany", comapanyData);
@@ -66,7 +67,7 @@ export default {
         const document = {
           id: responseData[key].Id,
           name: responseData[key].Name,
-          contact: responseData[key].Type,
+          contact: responseData[key].Contact,
           etats: [responseData[key].Etat],
           date: responseData[key].Date,
         };

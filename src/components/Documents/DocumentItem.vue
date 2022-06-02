@@ -83,7 +83,7 @@
         >
         <input
           @input="toggleConfirm"
-          type="passwordCertificat"
+          type="password"
           id="passwordCertificat"
           v-model.trim="passwordCertificat"
         />
@@ -165,6 +165,7 @@ export default {
     toggleSignatureModal() {
       this.passwordCertificat = "";
       this.showSignaturePopUp = !this.showSignaturePopUp;
+      this.error=null;
     },
     toggleConfirm() {
       if (this.passwordCertificat && this.passwordCertificat !== "") {

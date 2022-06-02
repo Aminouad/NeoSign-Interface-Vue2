@@ -182,4 +182,8 @@ h3 {
   height: 100vh;
   overflow: scroll;
 }
+.preview{
+  width: 34vw;
+
+}
 </style>

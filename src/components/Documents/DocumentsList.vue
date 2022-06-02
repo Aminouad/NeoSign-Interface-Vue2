@@ -17,7 +17,7 @@
     <div class="controls">
       <base-button mode="outline" @click="loadDocuments()">Refresh</base-button>
       <div class="search">
-        <input type="text" v-model="search" placeholder="Search" /> <br />
+        <input type="text" v-model="search" placeholder="Filtrez vos recherches..." /> <br />
         <br />
       </div>
       <base-button link to="/addDocument">Ajouter un document</base-button>

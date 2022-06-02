@@ -11,16 +11,14 @@
       <base-spinner></base-spinner>
     </base-dialog>
   </section>
-    <div>
-         
+    <div class="list-company">
 
       <div class="controls" >
-      <base-button mode="outline" @click="loadComapnies()">Refresh</base-button>
+      <base-button class="button" mode="outline" @click="loadComapnies()">Refresh</base-button>
        <div class="search">
-          <input  type="text" v-model="search" placeholder="Search" /> <br />
-          <br />
+          <input  type="text" v-model="search" placeholder="Filtrez vos recherches..." /> <br />
         </div>
-        <base-button link to="/addCompany" >Ajouter une société</base-button>
+        <base-button class="button" link to="/addCompany" >Ajouter une société</base-button>
       </div>
         <ul v-if="hasCompanies">
         <company-item
@@ -79,6 +77,7 @@ export default {
         this.error = error.message || "Une erreur s'est produite";
       }
       this.isLoading = false;
+      console.log(this.$store.dispatch("companies/loadCompanies"));
     },
     handleError() {
       this.error = null;
@@ -88,6 +87,15 @@ export default {
 </script>
 
 <style scoped>
+.button{
+  size-adjust: auto;
+}
+.list-company{
+    margin-inline: 1em;
+
+  border-radius: 1px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.059);
+}
 ul {
   list-style: none;
   margin: 0;
@@ -98,12 +106,17 @@ ul {
   margin-right: auto;
   margin-bottom: -10%;
 }
+
 .controls {
   display: flex;
   justify-content: space-between;
 }
-input:focus { 
-        outline: none !important;
-        border-color: #00B1B2;
-    }
+input{
+  margin-top: 0.2rem;
+  width: 90%;
+}
+input:focus {
+  outline: none !important;
+  border-color: #00b1b2;
+}
 </style>
