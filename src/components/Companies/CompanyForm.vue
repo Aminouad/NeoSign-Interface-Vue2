@@ -1,8 +1,8 @@
 <template>
   <div class="company-form">
     <form @submit.prevent="submitForm">
-       <h3>Ajouter une société :</h3>
-     
+      <h3>Ajouter une société :</h3>
+
       <div class="form-control">
         <label for="name">Nom de Société :</label>
         <input type="text" id="name" v-model.trim="name" />
@@ -10,6 +10,14 @@
       <div class="form-control">
         <label for="email">Email :</label>
         <input type="text" id="email" v-model.trim="email" />
+      </div>
+      <div class="form-control">
+        <label for="phone">Téléphone :</label>
+        <input type="text" id="phone" v-model.trim="phone" />
+      </div>
+      <div class="form-control">
+        <label for="address">Addresse :</label>
+        <input type="text" id="address" v-model="address" />
       </div>
       <div class="form-control">
         <label for="password">Mot de passe :</label>
@@ -31,8 +39,9 @@ export default {
     return {
       name: "",
       email: "",
+      phone: "",
       password: "",
-
+      address: "",
       date: "",
       etat: "activé",
     };
@@ -50,12 +59,14 @@ export default {
       const formData = {
         name: this.name,
         email: this.email,
+        phone: this.phone,
+        address: this.address,
         password: this.password,
         date: dateNow,
         etat: this.etat,
       };
       this.$emit("save-data", formData);
-      this.$router.replace("/companies"); // with replace we can't go back to previous page
+      // with replace we can't go back to previous page
     },
   },
 };
@@ -75,7 +86,6 @@ export default {
   justify-content: center;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 .button {
   margin-top: 1rem;

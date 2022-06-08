@@ -16,7 +16,9 @@
      },
      methods: {
          saveData(data) {
-         this.$store.dispatch('companies/addCompany',data);
+         this.$store.dispatch('companies/addCompany',data).finally(()=> {
+             this.$router.replace("/companies");
+         });
           
          }
      }

@@ -16,10 +16,12 @@ export default {
   methods: {
     saveData(data) {
         
-      this.$store.dispatch("documents/addDocument", data);
+      this.$store.dispatch("documents/addDocument", data).finally(()=>{
+         this.$router.replace("/Documents");
+      });
       //this.$store.dispatch("documents/loadDocuments");
 
-      this.$router.replace("/Documents"); // with replace we can't go back to previous page
+       // with replace we can't go back to previous page
     },
   },
 };

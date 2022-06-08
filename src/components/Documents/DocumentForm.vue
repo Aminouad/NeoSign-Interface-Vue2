@@ -183,7 +183,7 @@ h3 {
   overflow: scroll;
 }
 .preview{
-  width: 34vw;
+  width: 41vw;
 
 }
 </style>

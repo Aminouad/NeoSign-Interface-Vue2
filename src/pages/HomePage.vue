@@ -5,9 +5,9 @@
     <p>  1. Ajouter,signer,modifier,visualiser et télécharger vos documents.</p>
     <p>2. Ajouter vos signature électroniques de type P12 et PFX.</p>
     <p class="underline">II.Un espace sécurisé d'entreprise là où vous pouvez :</p>
-    <p>Ajoute et supprime des personnels.</p>
-    <p class="underline">III.Concernant la signature de vos docments vous pouvez signer :</p>
-    <p>Signer vos document avec la norme XAdES et PAdES.</p>
+    <p>Ajouter et supprimer des personnels.</p>
+    <p class="underline">III.Concernant la signature de vos docments vous pouvez  :</p>
+    <p>Signer vos document avec la norme XAdES et PAdES conforme aux exigences eIDAS.</p>
     <p class="underline">IV.Un tableau de bord là où vous trouverez tous vos statistiques.</p>
     
     

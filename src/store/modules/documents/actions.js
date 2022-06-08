@@ -2,7 +2,7 @@ import axios from "axios";
 export default {
   async addDocument({ dispatch }, data) {
     var userEmail = JSON.parse(localStorage.getItem("userEmail"));
-
+     console.log(data);
     var bodyFormData = new FormData();
     bodyFormData.append("Name", data.name);
     bodyFormData.append("Type", data.type);
@@ -29,27 +29,27 @@ export default {
       console.log(response);
     };
   },
-  async signDocument({state},data) {
+  async signDocument({ state }, data) {
     var access_token = JSON.parse(localStorage.getItem("token"));
+    console.log("action",data);
+    console.log("state", state);
+    return axios.post(
+      "https://localhost:7043/api/Signature/",
+      {
+        idDocument: data.idDocument,
+        passwordCertificate: data.passwordCertificate,
+        typeOfSignature:data.typeOfSignature,
+        userEmail: data.userEmail
+      },
+      {
+        headers: { Authorization: `bearer ${access_token}` },
+      }
+    )
+    .then((data) => {
+         console.log("action",data);
 
-     console.log("state",state);
-    return axios
-      .post(
-        "https://localhost:7043/api/Signature/",
-        {
-          idDocument: data.idDocument,
-          passwordCertificate:data.passwordCertificate,
-          userEmail: data.userEmail,
-        },
-        {
-          headers: { Authorization: `bearer ${access_token}` },
-        }
-      )
-      // .then((data) => {
-      //     console.log(data);
-        
-      // });
-      
+    });
+
     //console.log(response);
   },
 
@@ -88,58 +88,54 @@ export default {
     }
     commit("setDocuments", documents);
   },
-  async deleteDocument({dispatch}, data) {
+  async deleteDocument({ dispatch }, data) {
     var access_token = JSON.parse(localStorage.getItem("token"));
     console.log(data);
     const response = await axios
-    .delete("https://localhost:7043/api/Document/" + data.id
-    , {
-      headers: { Authorization: `bearer ${access_token}` },
-    })
-    .then((data) => {
-      console.log(data);
-      dispatch("loadDocuments")
-    });
-  console.log(response);
-},
-async editDocument({dispatch},payload) {
-  var access_token = JSON.parse(localStorage.getItem("token"));
-
-  const response = await axios
-   .put(
-"https://localhost:7043/api/Document/",
-       {
-        id: payload.id,
-        name: payload.name,
-        description: payload.description,
-
-    },
-     {
+      .delete("https://localhost:7043/api/Document/" + data.id, {
         headers: { Authorization: `bearer ${access_token}` },
-      }
-    )
-  .then((data) => {
-    console.log(data);
-     dispatch("loadDocuments");
-   });
-   console.log(response);
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch("loadDocuments");
+      });
+    console.log(response);
+  },
+  async editDocument({ dispatch }, payload) {
+    var access_token = JSON.parse(localStorage.getItem("token"));
 
-},
-async downloadDocument({state},data){
-    console.log("path",data);
-    var path=`https://localhost:7043/${data.path}`;
+    const response = await axios
+      .put(
+        "https://localhost:7043/api/Document/",
+        {
+          id: payload.id,
+          name: payload.name,
+          description: payload.description,
+        },
+        {
+          headers: { Authorization: `bearer ${access_token}` },
+        }
+      )
+      .then((data) => {
+        console.log(data);
+        dispatch("loadDocuments");
+      });
+    console.log(response);
+  },
+  async downloadDocument({ state }, data) {
+    console.log("path", data);
+    var path = `https://localhost:7043/${data.path}`;
     console.log(state);
     fetch(path)
-    .then( res => res.blob() )
-    .then( blob => {
-      var url = window.URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = `${data.name}.${data.type}`;
-      document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-      a.click();    
-      a.remove();  //a
-    });
-
-}
+      .then((res) => res.blob())
+      .then((blob) => {
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = `${data.name}.${data.type}`;
+        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        a.click();
+        a.remove(); //a
+      });
+  },
 };
