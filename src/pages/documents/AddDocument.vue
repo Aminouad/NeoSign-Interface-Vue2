@@ -1,7 +1,8 @@
 <template>
-      <div class=".add-document">
+      <div class="add-document">
 
-      <h2></h2>
+                    <h2>Nouveau document</h2>
+    <h3>Merci de bien remplir ce formulaire</h3>
 
       <document-form class="form-data" @save-data="saveData"></document-form>
         </div>
@@ -35,8 +36,13 @@ justify-content: center;
   
 }
 .add-document{
-    margin: 8rem;
+    
+   margin-top: 1.5%;
     display: flex;
+    margin-inline: 1em;
+    flex-direction: column;
+    align-items: center;
+
     
     
 }

@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export default {
   async addCompany(context, data) {
     var masterEmail = JSON.parse(localStorage.getItem("userEmail"));
@@ -18,41 +17,30 @@ export default {
     };
 
     var access_token = JSON.parse(localStorage.getItem("token"));
-    console.log(comapanyData);
-    const response = await axios
-      .post("https://localhost:7043/api/company/register", comapanyData, {
+    await axios.post(
+      "https://localhost:7043/api/company/register",
+      comapanyData,
+      {
         headers: { Authorization: `bearer ${access_token}` },
-      })
-      .then((data) => {
-        console.log(data);
-        this.$stroe.dispatch("loadCompanies");
-      });
-    console.log(response);
+      }
+    );
     context.commit("addCompany", comapanyData);
   },
-
-  /* addCompany(context,data) {
-        const comapanyData = {
-           
-                id:'d6',
-                name: data.name,
-                contact: data.email,
-                password:data.password,
-                date: data.date,
-                etats: data.etats,
-  
-        };
-        context.commit('addCompany',comapanyData)
-    } */
-
+  async deleteCompany({ dispatch }, data) {
+    var access_token = JSON.parse(localStorage.getItem("token"));
+    await axios
+      .delete("https://localhost:7043/api/Company/" + data, {
+        headers: { Authorization: `bearer ${access_token}` },
+      })
+      .then(() => {
+        dispatch("loadCompanies");
+      });
+  },
   async loadCompanies({ commit }) {
-    console.log("loadCompanies");
     var access_token = JSON.parse(localStorage.getItem("token"));
     const response = await axios.get("https://localhost:7043/api/Company/", {
       headers: { Authorization: `bearer ${access_token}` },
     });
-    //console.log(response);
-
     const responseData = response.data;
     let responseOK = response.status === 200;
 
@@ -61,7 +49,6 @@ export default {
       throw error;
     }
     const companies = [];
-    console.log(responseData);
     for (const key in responseData) {
       const document = {
         id: responseData[key].Id,

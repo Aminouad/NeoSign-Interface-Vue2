@@ -1,7 +1,6 @@
 <template>
   <div>
     <form class="document-form" @submit.prevent="submitForm">
-                    <h2>Ajouter un Document : </h2>
 
       <div class="form-control">
 
@@ -27,7 +26,7 @@
       </div>
       <div v-if="type" class="form-control">
         <label
-          >Fichier : </label>
+          >Attacher: </label>
           <input
             id="fileUpload"
             type="file"
@@ -46,7 +45,9 @@
 
       <base-button class="form-control">Enregistrer</base-button>
     </form>
-</div></template>
+    
+</div>
+</template>
 
 <script>
 import WebViewer from "../../components/layout/WebViewer.vue";
@@ -112,14 +113,14 @@ h2{
   margin: 1rem 1.8rem;
 }
 .document-form{
-  justify-items: center;
-  width: 23%;
+  padding: 2%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: inherit;
+  justify-content: space-around;
   border-radius: 1px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.059);
-
+  width: 48%;
 }
 
 label {

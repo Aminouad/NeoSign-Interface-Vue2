@@ -31,7 +31,6 @@ export default {
   },
 };
 </script>
-
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <div v-if="!collapsed">
@@ -156,7 +155,7 @@ export default {
   padding-bottom: 2px;
 }
 .listOfLink {
-  margin-top: 20%;
+  margin-top: 24%;
 }
 .facile {
   font-family: "Harlow Solid";

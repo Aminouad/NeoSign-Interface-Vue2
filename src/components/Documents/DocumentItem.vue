@@ -25,11 +25,15 @@
           >Signer</base-button
         >
 
-        <base-button  class="button" v-if="isPdf" mode="outline" @click="showDocument"
+        <base-button
+          class="button"
+          v-if="isPdf"
+          mode="outline"
+          @click="showDocument"
           >Afficher</base-button
         >
 
-        <base-button   class="button" mode="outline" @click="switchDetails"
+        <base-button class="button" mode="outline" @click="switchDetails"
           ><i class="fa-solid fa-circle-info"></i
         ></base-button>
         <base-dropdown
@@ -74,11 +78,36 @@
     <base-dialog
       title="Signature de document..."
       :show="showSignaturePopUp"
-      :confirm="true"
+      :confirm="confirmToggle"
       @close="toggleSignatureModal()"
       @actionTask="signDocument()"
     >
       <div class="form-control">
+        <div class="nature">
+          <label class="labelNature" for="nature"
+            >Merci de choisir la nature de Signature :</label
+          >
+          <div>
+            Visible
+            <input type="radio" value="visible" v-model="nature" />
+            Non Visible
+            <input type="radio" value="inVisible" v-model="nature" />
+          </div>
+        </div>
+        <div v-if="nature === 'visible'" class="nature">
+          <label class="label-signature" for="nature"
+            >Ajoutez votre label de signature :</label
+          >
+          <div>
+            <div class="labelAndImg">
+              <input
+                type="labelSignature"
+                id="labelSignature"
+                v-model.trim="labelSignature"
+              />
+            </div>
+          </div>
+        </div>
         <div class="selectOptions">
           <label class="labelOption" for="typeSelect"
             >Merci de choisir le niveau de Signature :</label
@@ -94,16 +123,16 @@
           </select>
         </div>
         <form>
-          <label class="labelSignature" for="passwordCertificat"
+          <label class="label-password-certificate" for="passwordCertificat"
             >Veuillez introduire le mot de passe de la certificat :</label
           >
-
           <input
             @input="toggleConfirm"
             type="password"
             id="passwordCertificat"
             v-model.trim="passwordCertificat"
           />
+          <div class="form-control"></div>
         </form>
       </div>
       <p class="errorMessage" v-if="error">Mot de passe invalide</p>
@@ -131,12 +160,15 @@ export default {
       showDeletePopUp: false,
       dataWithId: null,
       isPassworEmpty: true,
+      nature: "",
       showSignaturePopUp: false,
       showEditPopUp: false,
       deleteModel: false,
       showDetails: false,
       isLoading: false,
+      file: "",
       passwordCertificat: "",
+      labelSignature: "",
       listOfOptions: {
         options: [
           {
@@ -145,9 +177,7 @@ export default {
           {
             value: "Télécharger",
           },
-          {
-            value: "Partager",
-          },
+         
           {
             value: "Supprimer",
           },
@@ -205,29 +235,32 @@ export default {
       this.$emit("show-document", this.document);
     },
     signDocument() {
-      console.log("dsddsdsd",this.isLoading);
+      console.log("dsddsdsd", this.isLoading);
       this.isLoading = true;
       const signData = {
         idDocument: this.document.id,
         passwordCertificate: this.passwordCertificat,
         userEmail: this.document.owner,
         typeOfSignature: this.typeOfSignature,
+        nature: this.nature,
+        label: this.labelSignature,
       };
 
       this.$store
         .dispatch("documents/signDocument", signData)
         .then((response) => {
           this.$store.dispatch("documents/loadDocuments");
-         
+
           this.toggleSignatureModal();
           console.log(response);
         })
         .catch((err) => {
           console.log(err.message);
-          
+
           this.error = true;
-        }).finally(()=> {
-          this.isLoading=false;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
     setNewSelectedOption(selectedOption) {
@@ -267,6 +300,10 @@ export default {
 </script>
 
 <style scoped>
+.nature {
+  display: flex;
+  flex-direction: row;
+}
 .errorMessage {
   display: flex;
   justify-content: center;
@@ -278,20 +315,31 @@ input:focus {
   border-color: #00b1b2;
   border-radius: 5%;
 }
-.labelSignature {
-  margin-right: 3%;
-  margin-left: 5%;
+.label-signature {
+  margin-right: 21%;
+  margin-bottom: 6%;
+}
+.img-signature {
+  margin-right: 23%;
+  margin-bottom: 6%;
+}
+.label-password-certificate {
+  margin-right: 2%;
+}
+.labelNature {
+  margin-bottom: 6%;
+  margin-right: 14%;
 }
 .labelOption {
-  margin-right: 14%;
-  margin-left: 5%;
+  margin-right: 13%;
 }
 
 .form-control {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 1%;
+  margin-left: 2%;
+  margin-top: 3%;
 }
 .selectOptions {
   margin-bottom: 6%;
@@ -345,17 +393,15 @@ h4 {
 }
 
 .actions {
-
   display: flex;
   justify-content: flex-end;
-
 }
 .validation-Message {
   display: flex;
   justify-content: center;
   color: #f0ad4e;
 }
-.button{
+.button {
   margin-inline: 0.2rem;
 }
 </style>

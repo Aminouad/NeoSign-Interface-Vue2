@@ -39,7 +39,9 @@ export default {
         idDocument: data.idDocument,
         passwordCertificate: data.passwordCertificate,
         typeOfSignature:data.typeOfSignature,
-        userEmail: data.userEmail
+        userEmail: data.userEmail,
+        nature:data.nature,
+        label:data.label
       },
       {
         headers: { Authorization: `bearer ${access_token}` },

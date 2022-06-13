@@ -52,7 +52,6 @@
           :date="company.date"
           :phone="company.phone"
           :address="company.address"
-          :etats="company.etats"
         ></company-item>
       </tbody>
     </table>
@@ -155,7 +154,7 @@ ul {
 .controls {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9rem;
 }
 
 input:focus {
@@ -171,7 +170,7 @@ input:focus {
 
 #table th {
   border: 1px solid #ddd;
-  padding: 0.3rem;
+  padding: 0.4rem;
 }
 
 #table tr:nth-child(odd) {
@@ -184,7 +183,8 @@ input:focus {
 
 #table th {
   text-align: left;
-  background-color: #00b1b2;
+  border: #00b1b2;
+  background-color: #00b2b2;
   color: white;
 }
 </style>

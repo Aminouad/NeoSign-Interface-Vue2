@@ -26,6 +26,22 @@
           />
         
       </div>
+    
+        <div class="form-control">
+          <label
+          >Image signature : </label>
+          <div>
+            <div class="">
+              <input
+                id="fileUpload"
+                type="file"
+                ref="image"
+                @input="handleFileUpload()"
+                accept=".png"
+              />
+            </div>
+          </div>
+        </div>
 
       
       <base-button class="form-control">Enregistrer</base-button>
@@ -40,7 +56,7 @@ export default {
     return {
      
       type: "",
-    
+      image:"",
       file: "",
       path: "",
     };
@@ -54,11 +70,14 @@ export default {
         Owner:userEmail,
         type: this.type,
         File: this.file,
+        Image:this.image,
       };
       this.$emit("save-data", formData);
     },
     handleFileUpload() {
       this.file = this.$refs.file.files[0];
+      this.image = this.$refs.image.files[0];
+
       this.path = URL.createObjectURL(this.file);
       console.log(URL.createObjectURL(this.file));
     },
