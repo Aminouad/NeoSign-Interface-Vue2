@@ -1,8 +1,7 @@
 <template>
   <div class="companies-viewer">
-    <h3>Liste des sociétés :</h3>
-      <companies-list></companies-list>
-   
+    <h3>Liste des sociétés </h3>
+    <companies-list></companies-list>
   </div>
 </template>
 
@@ -18,18 +17,22 @@ export default {
       key: 0,
     };
   },
-  
+
   components: {
     CompaniesList,
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .companies-viewer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+}
+h3 {
+  display: flex;
+  justify-content: start;
+  color: #00b1b2;
+  margin-left: 2%;
 }
 </style>

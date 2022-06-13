@@ -14,8 +14,8 @@
         </section>
         <menu v-if="!fixed">
           <slot name="actions">
-             <base-button  @click="actionTask" v-if="confirm" >Confirmer</base-button>
-            <base-button @click="tryClose">Fermer</base-button>
+             <base-button   class="button" @click="actionTask" v-if="confirm" >Confirmer</base-button>
+            <base-button  class="button" @click="tryClose">Fermer</base-button>
           </slot>
         </menu>
       </dialog>
@@ -63,6 +63,10 @@ export default {
 </script>
 
 <style scoped>
+.button{
+    margin-inline: 0.2rem;
+
+}
 .backdrop {
   position: fixed;
   top: 0;

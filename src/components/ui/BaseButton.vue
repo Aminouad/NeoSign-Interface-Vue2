@@ -41,7 +41,7 @@ a {
   color: white;
   cursor: pointer;
   border-radius: 3px;
-  margin-right: 0.5rem;
+
   display: inline-block;
 font-size: 70%;
 
