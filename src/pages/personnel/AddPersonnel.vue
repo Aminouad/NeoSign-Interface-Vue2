@@ -7,14 +7,14 @@
      </section>
  </template>
  <script>
-     import PersonnelForm from '../../components/Personnels/PersonnelForm.vue';
+     import PersonnelForm from '../../components/Personnel/PersonnelForm.vue';
  export default {
      components: {
          PersonnelForm
      },
      methods: {
          saveData(data) {
-         this.$store.dispatch('personnels/addPersonnel',data);
+         this.$store.dispatch('personals/addPersonall',data);
 
          }
      }

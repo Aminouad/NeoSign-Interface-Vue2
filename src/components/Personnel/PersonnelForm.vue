@@ -57,7 +57,7 @@ export default {
         etat:this.etat
       };
       this.$emit('save-data',formData);
-     this.$router.replace('/personnels'); // with replace we can't go back to previous page 
+     this.$router.replace('/personnel'); // with replace we can't go back to previous page 
 
     },
   },
