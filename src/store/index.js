@@ -2,14 +2,14 @@ import { createStore } from "vuex";
 import certificateModule from './modules/certificate/index.js'
 import documentsModule from './modules/documents/index.js'
 import companiesModule from './modules/companies/index.js'
-import personnelsModule from './modules/personnels/index.js'
-import authModule from './modules/auth/index.js'
+import personnelModule from './modules/personnel/index.js'
+import authenticationModule from './modules/authentication/index.js'
 const store= createStore({
     modules:{
         documents:documentsModule,
         companies:companiesModule,
-        personnels:personnelsModule,
-        auth:authModule,
+        personnel:personnelModule,
+        authentication:authenticationModule,
         certificate:certificateModule
     }
 });

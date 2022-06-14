@@ -1,36 +1,4 @@
-<script>
-import SidebarLink from "./SideBarLink.vue";
-import { collapsed, toggleSidebar, sidebarWidth } from "./state";
-import logo from "@/assets/neosign_logo.png";
-export default {
-  props: {},
 
-  components: { SidebarLink },
-  setup() {
-    return { collapsed, toggleSidebar, sidebarWidth };
-  },
-
-  data() {
-    return {
-      logo:logo,
-      upHere: false,
-    };
-  },
-  methods: {
-    logout() {
-      return this.$store.dispatch("logout");
-    },
-  },
-  computed: {
-    getRole() {
-      return JSON.parse(localStorage.getItem("role"));
-    },
-    getUserEmail() {
-      return JSON.parse(localStorage.getItem("userEmail"));
-    },
-  },
-};
-</script>
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <div v-if="!collapsed">
@@ -77,8 +45,8 @@ export default {
       ></div>
       <div v-if="getRole==='AdminNeoledge'">
       <SidebarLink  to="/companies" icon="fas fa-building">Sociétés</SidebarLink></div>
-      <div v-if="getRole!=='AdminNeoledge'">
-      <SidebarLink to="/personnels" icon="fas fa-address-book"
+      <div v-if="isAdminCompany">
+      <SidebarLink to="/personnel" icon="fas fa-address-book"
         >Personnels</SidebarLink
       ></div>
       <SidebarLink to="/authentication" @click="logout" icon="fas fa-sign-out"
@@ -94,7 +62,47 @@ export default {
     </span>
   </div>
 </template>
+<script>
+import SidebarLink from "./SideBarLink.vue";
+import { collapsed, toggleSidebar, sidebarWidth } from "./state";
+import logo from "@/assets/neosign_logo.png";
+export default {
+  props: {},
 
+  components: { SidebarLink },
+  setup() {
+    return { collapsed, toggleSidebar, sidebarWidth };
+  },
+
+  data() {
+    return {
+      logo:logo,
+      upHere: false,
+    };
+  },
+  methods: {
+    logout() {
+      return this.$store.dispatch("logout");
+    },
+  },
+  created() {
+    console.log(this.isAdminCompany);
+  },
+  computed: {
+    getRole() { 
+      return JSON.parse(localStorage.getItem("role"));
+    },
+    isAdminCompany() {
+       if(this.getRole.includes("Admin") && this.getRole!=='AdminNeoledge')
+            return true;
+       else return false
+    },
+    getUserEmail() {
+      return JSON.parse(localStorage.getItem("userEmail"));
+    },
+  },
+};
+</script>
 <style>
 :root {
   --sidebar-bg-color: #00b1b2;

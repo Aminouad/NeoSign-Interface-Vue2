@@ -10,7 +10,7 @@
 
 <script>
 import SideBar from "./components/layout/sidebar/SideBar.vue";
-import TheFooter from "./components/layout/THeFooter.vue";
+import TheFooter from "./components/layout/MainFooter.vue";
 import { sidebarWidth } from "./components/layout/sidebar/state";
 export default {
   components: {

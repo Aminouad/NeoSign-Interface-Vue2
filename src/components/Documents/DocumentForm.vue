@@ -77,7 +77,7 @@ export default {
         (today.getMonth() + 1) +
         "/" +
         today.getFullYear();
-      var userName = this.$store.getters["auth/userId"];
+      var userName = this.$store.getters["authentication/userId"];
 
       const formData = {
         name: this.name,

@@ -2,7 +2,7 @@ import axios from "axios";
 export default {
   async login(context, payload) {
     const responseToken = await axios.post(
-      "https://localhost:7043/api/Auth/login",
+      "https://localhost:7043/api/Authentication/login",
       {
         email: payload.email,
         password: payload.password,
@@ -32,7 +32,7 @@ export default {
             console.log(decoded); */
 
       const responseUserInfo = await axios.get(
-        "https://localhost:7043/api/Auth",
+        "https://localhost:7043/api/Authentication",
         {
           headers: { Authorization: `bearer ${access_token}` },
         }
