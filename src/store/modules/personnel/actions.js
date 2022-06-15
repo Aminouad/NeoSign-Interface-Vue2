@@ -1,7 +1,28 @@
 import axios from "axios";
 
 export default {
-    
+  async addPersonnel(context, data) {
+    var masterEmail = JSON.parse(localStorage.getItem("userEmail"));
+
+    const personnelData = {
+      name: data.name,
+      password: data.password,
+      email: data.email,
+      position: data.position,
+      date: data.date,
+      master: masterEmail,
+    };
+
+    var access_token = JSON.parse(localStorage.getItem("token"));
+    await axios.post(
+      "https://localhost:7043/api/Personnel/register",
+      personnelData,
+      {
+        headers: { Authorization: `bearer ${access_token}` },
+      }
+    );
+    context.commit("addPersonnel", personnelData);
+  },
      async loadPersonnels({ commit }) {
     var access_token = JSON.parse(localStorage.getItem("token"));
     var user = JSON.parse(localStorage.getItem("userEmail"));

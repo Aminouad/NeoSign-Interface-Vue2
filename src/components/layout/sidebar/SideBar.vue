@@ -1,4 +1,3 @@
-
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <div v-if="!collapsed">
@@ -34,21 +33,26 @@
       <SidebarLink to="/dashboard" icon="fas fa-columns"
         >Tableau de bord</SidebarLink
       >
-             <div v-if="getRole!=='AdminNeoledge'">
-
-      <SidebarLink to="/certificat" icon="fa-solid fa-signature"
-        >Mon certificat</SidebarLink
-      ></div>
-       <div v-if="getRole!=='AdminNeoledge'">
-      <SidebarLink to="/documents" icon="fas fa-file-alt"
-        >Doucments</SidebarLink
-      ></div>
-      <div v-if="getRole==='AdminNeoledge'">
-      <SidebarLink  to="/companies" icon="fas fa-building">Sociétés</SidebarLink></div>
+      <div v-if="getRole !== 'AdminNeoledge'">
+        <SidebarLink to="/certificat" icon="fa-solid fa-signature"
+          >Mon certificat</SidebarLink
+        >
+      </div>
+      <div v-if="getRole !== 'AdminNeoledge'">
+        <SidebarLink to="/documents" icon="fas fa-file-alt"
+          >Doucments</SidebarLink
+        >
+      </div>
+      <div v-if="getRole === 'AdminNeoledge'">
+        <SidebarLink to="/companies" icon="fas fa-building"
+          >Sociétés</SidebarLink
+        >
+      </div>
       <div v-if="isAdminCompany">
-      <SidebarLink to="/personnel" icon="fas fa-address-book"
-        >Personnels</SidebarLink
-      ></div>
+        <SidebarLink to="/personnel" icon="fas fa-address-book"
+          >Personnels</SidebarLink
+        >
+      </div>
       <SidebarLink to="/authentication" @click="logout" icon="fas fa-sign-out"
         >Se déconnecter</SidebarLink
       >
@@ -76,7 +80,7 @@ export default {
 
   data() {
     return {
-      logo:logo,
+      logo: logo,
       upHere: false,
     };
   },
@@ -89,13 +93,13 @@ export default {
     console.log(this.isAdminCompany);
   },
   computed: {
-    getRole() { 
+    getRole() {
       return JSON.parse(localStorage.getItem("role"));
     },
     isAdminCompany() {
-       if(this.getRole.includes("Admin") && this.getRole!=='AdminNeoledge')
-            return true;
-       else return false
+      if (this.getRole.includes("Admin") && this.getRole !== "AdminNeoledge")
+        return true;
+      else return false;
     },
     getUserEmail() {
       return JSON.parse(localStorage.getItem("userEmail"));
@@ -179,7 +183,6 @@ export default {
   display: flex;
   flex-direction: row;
   margin-bottom: -9%;
-
 }
 .userInfo2 {
   display: flex;
@@ -193,10 +196,9 @@ export default {
 }
 .user {
   margin-top: -5%;
-font-size:0.8rem;
+  font-size: 0.8rem;
   border-top: 0.01rem solid;
   border-bottom: 0.01rem solid;
   margin-bottom: -15%;
 }
-
 </style>
