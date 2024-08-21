@@ -1,7 +1,4 @@
-# Vue 3 + Vite
+* NeoSign is an electronic signature platform that uses the DSS framework (https://ec.europa.eu/digital-building-blocks/DSS/webapp-demo/doc/dss-documentation.html).
+* NeoSign consists of a .NET backend, a signature API built with SpringBoot, and an interface developed with Vue 2.
+* NeoSign is being developed as part of my final year project.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
